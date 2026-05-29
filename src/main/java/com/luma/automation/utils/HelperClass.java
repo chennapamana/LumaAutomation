@@ -3,12 +3,12 @@ package com.luma.automation.utils;
 import java.time.Duration;
 import java.util.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.By;
 
 public class HelperClass {
 
@@ -41,19 +41,19 @@ public class HelperClass {
     }
     //---------Operational methods--------//
     //click the element//
-    public static void clickOnElement(WebElement element) {
+    public static void clickOnElement(By element) {
         wait.until(ExpectedConditions.elementToBeClickable(element));
-        act.click(element).perform();
+        act.click(getDriver().findElement(element)).perform();
     }
     //fill the Element//
-    public static void fillTheElement(WebElement element,String data) {
-        wait.until(ExpectedConditions.visibilityOf(element));
-        act.sendKeys(element,data).perform();
+    public static void fillTheElement(By element, String data) {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(element));
+        act.sendKeys(getDriver().findElement(element), data).perform();
     }
     //moveToElement//
-    public static void moveToElement(WebElement element) {
-        wait.until(ExpectedConditions.visibilityOf(element));
-        act.moveToElement(element).perform();
+    public static void moveToElement(By element) {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(element));
+        act.moveToElement(getDriver().findElement(element)).perform();
     }
     public static void sleepTime() throws InterruptedException {
         Thread.sleep(5000);
