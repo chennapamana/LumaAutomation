@@ -40,26 +40,21 @@ public class HelperClass {
         return driver;
     }
     //---------Operational methods--------//
-    //click the element//
+    //---------click the element----------//
     public static void clickOnElement(By element) {
         wait.until(ExpectedConditions.elementToBeClickable(element));
         act.click(getDriver().findElement(element)).perform();
     }
-    //fill the Element//
+    //--------fill the Element--------//
     public static void fillTheElement(By element, String data) {
         wait.until(ExpectedConditions.visibilityOfElementLocated(element));
         act.sendKeys(getDriver().findElement(element), data).perform();
     }
-    //moveToElement//
+    //---------moveToElement-------//
     public static void moveToElement(By element) {
         wait.until(ExpectedConditions.visibilityOfElementLocated(element));
         act.moveToElement(getDriver().findElement(element)).perform();
     }
-    public static void sleepTime() throws InterruptedException {
-        Thread.sleep(5000);
-    }
-
-
     public static void setUpDriver() {
 
         if (helperClass==null) {
