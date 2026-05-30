@@ -1,18 +1,9 @@
 package com.luma.automation.locators;
-
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.By;
 
 public class RegisterNewAccountElements {
-
-    @FindBy(xpath = "//input[@name='username']")
-    public WebElement HrmUsernameInputField;
-
-    @FindBy(xpath = "//input[@name='password']")
-    public WebElement HrmPasswordInputField;
-
-    @FindBy(xpath = "//button[normalize-space()='Login']")
-    public WebElement HrmLoginButton;
-
+    public By Username=By.xpath("//input[@name='username']");
+    public By Password=By.xpath("//input[@name='password']");
+    public By Login=By.xpath("//button[normalize-space()='Login']");
 }
 

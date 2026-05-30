@@ -3,16 +3,10 @@ package com.luma.automation.stepDefinitions;
 import com.luma.automation.locators.RegisterNewAccountElements;
 import com.luma.automation.utils.HelperClass;
 import com.luma.automation.utils.PropertyFileHandling;
-import org.openqa.selenium.support.PageFactory;
 import io.cucumber.java.en.*;
 
 public class RegisterNewAccountSteps {
-    RegisterNewAccountElements RegisterAccount;
-    public RegisterNewAccountSteps() {
-        this.RegisterAccount = new RegisterNewAccountElements();
-        PageFactory.initElements(HelperClass.getDriver(), RegisterAccount);
-
-    }
+    RegisterNewAccountElements hrmlocators = new RegisterNewAccountElements();
 
     @Given("User is in OrangeHRM login page")
     public void user_is_in_orange_hrm_login_page() {
@@ -31,21 +25,20 @@ public class RegisterNewAccountSteps {
     }
 
     @When("User enters Username in Username input field")
-    public void user_enters_username_in_username_input_field() throws InterruptedException {
-        HelperClass.sleepTime();
-        HelperClass.fillTheElement(RegisterAccount.HrmUsernameInputField,PropertyFileHandling.property("HrmUsername"));
+    public void user_enters_username_in_username_input_field() {
+        HelperClass.fillTheElement(hrmlocators.Username,PropertyFileHandling.property("HrmUsername"));
 
     }
 
     @When("User enters Password in Password input field")
     public void user_enters_password_in_password_input_field() {
-        HelperClass.fillTheElement(RegisterAccount.HrmPasswordInputField,PropertyFileHandling.property("HrmPassword"));
+        HelperClass.fillTheElement(hrmlocators.Password,PropertyFileHandling.property("HrmPassword"));
 
     }
 
     @When("User click on Login button")
     public void user_click_on_login_button() {
-        HelperClass.clickOnElement(RegisterAccount.HrmLoginButton);
+        HelperClass.clickOnElement(hrmlocators.Login);
 
     }
 
